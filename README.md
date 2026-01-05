@@ -42,11 +42,15 @@ To solve for the coefficients ($a_0, a_1, a_2$), we calculate the sums ($\Sigma$
 
 We arrange these sums into the matrix equation X A = B to solve for the unknown coefficients A.
 
+### Step 2: The Normal Equations (Matrix Form)
+
+We arrange these sums into the matrix equation $X \cdot A = B$ to solve for the unknown coefficients ($A$).
+
 $$
 \begin{bmatrix}
-n & \Sigma x & \Sigma x^2 \\\\
-\Sigma x & \Sigma x^2 & \Sigma x^3 \\\\
-\Sigma x^2 & \Sigma x^3 & \Sigma x^4
+n & \sum x & \sum x^2 \\\\
+\sum x & \sum x^2 & \sum x^3 \\\\
+\sum x^2 & \sum x^3 & \sum x^4
 \end{bmatrix}
 \cdot
 \begin{bmatrix}
@@ -56,13 +60,13 @@ a_2
 \end{bmatrix}
 =
 \begin{bmatrix}
-\Sigma y \\\\
-\Sigma xy \\\\
-\Sigma x^2y
+\sum y \\\\
+\sum xy \\\\
+\sum x^2y
 \end{bmatrix}
 $$
 
-Substituting the values from our table (n=4):
+Substituting the values from our table ($n=4$):
 
 $$
 \begin{bmatrix}
