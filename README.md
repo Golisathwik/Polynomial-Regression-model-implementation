@@ -105,7 +105,6 @@ Follow these steps to set up the environment and run the Polynomial Regression m
 Ensure you have Python installed. You will need the following libraries:
 ```
 pip install pandas matplotlib scikit-learn
-
 ```
 
 ### 2. Project Structure
@@ -121,64 +120,64 @@ Open your terminal or command prompt, navigate to the folder, and run:
 
 ```
 python polynomial_regression.py
-
 ```
 
 ### 4. Interactive Prediction
 
 Once the script runs, it will ask for input:
 
-1. **Enter Size:** The program will prompt you to enter a house size (e.g., `2500`).
-2. **Output:** It will display the predicted price in the console.
-3. **Visualization:** A graph will pop up showing the data points and the regression curve.
+1. **Enter Hours:** The program will prompt you to enter the number of study hours (e.g., `5`).
+2. **Output:** It will display the predicted marks in the console.
+3. **Visualization:** A graph will pop up showing the relationship between Study Hours and Marks.
 
 ---
 
 ## 🛠️ Development Logic: Step-by-Step
 
-Here is the breakdown of how the `polynomial_regression.py` script was developed to transform a linear model into a polynomial one.
+Here is the breakdown of how the model was developed to predict Student Marks based on Study Hours.
 
 ### Step 1: Data Loading & Preprocessing
 
 We use **Pandas** to load the dataset.
 
 * **Action:** Read `predict.csv` into a dataframe.
-* **Reshaping:** The input `x` (size) is reshaped into a 2D array (`[[...]]`) because Scikit-Learn expects a matrix format for features.
+* **Dataset columns:** `Hours` (Independent Variable ) and `Marks` (Dependent Variable ).
+* **Reshaping:** The input `Hours` is reshaped into a 2D array (`[[...]]`) because Scikit-Learn expects a matrix format.
 
-### Step 2: Polynomial Transformation (The Key Step)
+### Step 2: Polynomial Transformation
 
-Standard Linear Regression cannot fit a curve. To fix this, we use `PolynomialFeatures` from Scikit-Learn.
+The relationship between study hours and marks isn't a straight line (marks plateau as hours increase). To fit this curve, we use `PolynomialFeatures`.
 
-* **Logic:** We convert the input  into a polynomial set .
+* **Logic:** We convert the single feature `Hours` into a polynomial set: `Hours`, `Hours^2`.
 * **Code Concept:**
-```python
+```
 poly = PolynomialFeatures(degree=2)
 x_poly = poly.fit_transform(x)
 
 ```
 
 
-* *Before:* `[size]`
-* *After:* `[size, size^2]` (This allows the linear model to learn the curve).
+* *Before:* `[5 hours]`
+* *After:* `[5, 25]` (This allows the model to learn the curved pattern).
 
 
 
 ### Step 3: Training the Model
 
-We fit a standard **Linear Regression** model, but instead of training it on the original simple data, we train it on the **transformed polynomial data** (`x_poly`).
+We fit a standard **Linear Regression** model on the transformed data.
 
-* **Math:** The model learns coefficients for both  and  ().
+* **Math:** The model learns how both the raw hours and the squared hours affect the marks ().
 
 ### Step 4: Making a Prediction
 
-When the user enters a new size (e.g., `2500`), we cannot just pass `2500` to the model.
+When the user enters a value (e.g., `8 hours`):
 
-1. **Transform:** We first convert `2500` into `[2500, 2500^2]`.
-2. **Predict:** The model calculates the price using these squared values.
+1. **Transform:** The code converts `8` into `[8, 64]`.
+2. **Predict:** The model calculates the likely marks using these values.
 
 ### Step 5: Visualization
 
-Finally, we use **Matplotlib** to compare the reality vs. the prediction.
+Finally, we use **Matplotlib** to visualize the result.
 
-* **Scatter Plot (Blue/Black):** Shows the actual data points from `predict.csv`.
-* **Curve Line (Red):** Shows the polynomial regression line fitted by the model.
+* **Scatter Plot:** Shows the actual student data (Hours vs Marks).
+* **Curve Line (Red):** Shows the polynomial regression curve, demonstrating how the model fits the data better than a straight line.
