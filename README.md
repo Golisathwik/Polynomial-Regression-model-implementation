@@ -95,3 +95,90 @@ $$
 
 **The Final Best-Fit Equation:**
 $$y = -0.75 + 0.95x + 0.75x^2$$
+
+---
+
+## How to Run the Model
+Follow these steps to set up the environment and run the Polynomial Regression model on your local machine.
+
+### 1. Prerequisites
+Ensure you have Python installed. You will need the following libraries:
+```
+pip install pandas matplotlib scikit-learn
+
+```
+
+### 2. Project Structure
+
+Keep both files in the same directory:
+
+* `polynomial_regression.py` (The main logic)
+* `predict.csv` (The training dataset)
+
+### 3. Execution
+
+Open your terminal or command prompt, navigate to the folder, and run:
+
+```
+python polynomial_regression.py
+
+```
+
+### 4. Interactive Prediction
+
+Once the script runs, it will ask for input:
+
+1. **Enter Size:** The program will prompt you to enter a house size (e.g., `2500`).
+2. **Output:** It will display the predicted price in the console.
+3. **Visualization:** A graph will pop up showing the data points and the regression curve.
+
+---
+
+## 🛠️ Development Logic: Step-by-Step
+
+Here is the breakdown of how the `polynomial_regression.py` script was developed to transform a linear model into a polynomial one.
+
+### Step 1: Data Loading & Preprocessing
+
+We use **Pandas** to load the dataset.
+
+* **Action:** Read `predict.csv` into a dataframe.
+* **Reshaping:** The input `x` (size) is reshaped into a 2D array (`[[...]]`) because Scikit-Learn expects a matrix format for features.
+
+### Step 2: Polynomial Transformation (The Key Step)
+
+Standard Linear Regression cannot fit a curve. To fix this, we use `PolynomialFeatures` from Scikit-Learn.
+
+* **Logic:** We convert the input  into a polynomial set .
+* **Code Concept:**
+```python
+poly = PolynomialFeatures(degree=2)
+x_poly = poly.fit_transform(x)
+
+```
+
+
+* *Before:* `[size]`
+* *After:* `[size, size^2]` (This allows the linear model to learn the curve).
+
+
+
+### Step 3: Training the Model
+
+We fit a standard **Linear Regression** model, but instead of training it on the original simple data, we train it on the **transformed polynomial data** (`x_poly`).
+
+* **Math:** The model learns coefficients for both  and  ().
+
+### Step 4: Making a Prediction
+
+When the user enters a new size (e.g., `2500`), we cannot just pass `2500` to the model.
+
+1. **Transform:** We first convert `2500` into `[2500, 2500^2]`.
+2. **Predict:** The model calculates the price using these squared values.
+
+### Step 5: Visualization
+
+Finally, we use **Matplotlib** to compare the reality vs. the prediction.
+
+* **Scatter Plot (Blue/Black):** Shows the actual data points from `predict.csv`.
+* **Curve Line (Red):** Shows the polynomial regression line fitted by the model.
