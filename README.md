@@ -40,53 +40,17 @@ To solve for the coefficients ($a_0, a_1, a_2$), we calculate the sums ($\Sigma$
 
 ### Step 2: The Normal Equations (Matrix Form)
 
-We arrange these sums into the matrix equation X A = B to solve for the unknown coefficients A.
-
-### Step 2: The Normal Equations (Matrix Form)
-
 We arrange these sums into the matrix equation $X \cdot A = B$ to solve for the unknown coefficients ($A$).
 
-$$
-\begin{bmatrix}
-n & \sum x & \sum x^2 \\\\
-\sum x & \sum x^2 & \sum x^3 \\\\
-\sum x^2 & \sum x^3 & \sum x^4
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-a_0 \\\\
-a_1 \\\\
-a_2
-\end{bmatrix}
-=
-\begin{bmatrix}
-\sum y \\\\
-\sum xy \\\\
-\sum x^2y
-\end{bmatrix}
-$$
+<p align="center">
+  <img src="https://latex.codecogs.com/svg.image?\begin{bmatrix}n&\sum%20x_i&\sum%20x_i^2\\\sum%20x_i&\sum%20x_i^2&\sum%20x_i^3\\\sum%20x_i^2&\sum%20x_i^3&\sum%20x_i^4\end{bmatrix}\cdot\begin{bmatrix}a_0\\a_1\\a_2\end{bmatrix}=\begin{bmatrix}\sum%20y_i\\\sum%20x_i%20y_i\\\sum%20x_i^2%20y_i\end{bmatrix}" alt="Normal Equation Matrix Formula" />
+</p>
 
 Substituting the values from our table ($n=4$):
 
-$$
-\begin{bmatrix}
-4 & 10 & 30 \\\\
-10 & 30 & 100 \\\\
-30 & 100 & 354
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-a_0 \\\\
-a_1 \\\\
-a_2
-\end{bmatrix}
-=
-\begin{bmatrix}
-29 \\\\
-96 \\\\
-338
-\end{bmatrix}
-$$
+<p align="center">
+  <img src="https://latex.codecogs.com/svg.image?\begin{bmatrix}4&10&30\\10&30&100\\30&100&354\end{bmatrix}\cdot\begin{bmatrix}a_0\\a_1\\a_2\end{bmatrix}=\begin{bmatrix}29\\96\\338\end{bmatrix}" alt="Normal Equation Matrix Substituted Values" />
+</p>
 
 ### Step 3: Final Model Solution
 By solving the matrix equation (calculating $X^{-1} \cdot B$), we get the optimal values:
