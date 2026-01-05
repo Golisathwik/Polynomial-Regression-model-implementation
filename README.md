@@ -17,6 +17,8 @@ Where:
 * $\beta_1, \beta_2, \dots$: The Coefficients for each power of $x$.
 * $n$: The Degree (1 = Line, 2 = Parabola/Curve, 3 = S-shape).
 
+<img width="2816" height="1536" alt="Image" src="https://github.com/user-attachments/assets/d004bdfb-7521-46fa-86c8-6691b766a449" />
+
 ---
 
 ## 🧮 Solved Example: Degree 2 (Quadratic)
