@@ -39,32 +39,49 @@ To solve for the coefficients ($a_0, a_1, a_2$), we calculate the sums ($\Sigma$
 | **Sum ($\Sigma$)** | **29** | **96** | **30** | **338** | **100** | **354** |
 
 ### Step 2: The Normal Equations (Matrix Form)
-We arrange these sums into the matrix equation $X \cdot A = B$ to solve for the unknown coefficients ($A$).
+
+We arrange these sums into the matrix equation X A = B to solve for the unknown coefficients A.
 
 $$
 \begin{bmatrix}
-n & \Sigma x & \Sigma x^2 \\
-\Sigma x & \Sigma x^2 & \Sigma x^3 \\
+n & \Sigma x & \Sigma x^2 \\\\
+\Sigma x & \Sigma x^2 & \Sigma x^3 \\\\
 \Sigma x^2 & \Sigma x^3 & \Sigma x^4
 \end{bmatrix}
 \cdot
-\begin{bmatrix} a_0 \\ a_1 \\ a_2 \end{bmatrix}
+\begin{bmatrix}
+a_0 \\\\
+a_1 \\\\
+a_2
+\end{bmatrix}
 =
-\begin{bmatrix} \Sigma y \\ \Sigma xy \\ \Sigma x^2y \end{bmatrix}
+\begin{bmatrix}
+\Sigma y \\\\
+\Sigma xy \\\\
+\Sigma x^2y
+\end{bmatrix}
 $$
 
-Substituting the values from our table ($n=4$ because we have 4 data points):
+Substituting the values from our table (n=4):
 
 $$
 \begin{bmatrix}
-4 & 10 & 30 \\
-10 & 30 & 100 \\
+4 & 10 & 30 \\\\
+10 & 30 & 100 \\\\
 30 & 100 & 354
 \end{bmatrix}
 \cdot
-\begin{bmatrix} a_0 \\ a_1 \\ a_2 \end{bmatrix}
+\begin{bmatrix}
+a_0 \\\\
+a_1 \\\\
+a_2
+\end{bmatrix}
 =
-\begin{bmatrix} 29 \\ 96 \\ 338 \end{bmatrix}
+\begin{bmatrix}
+29 \\\\
+96 \\\\
+338
+\end{bmatrix}
 $$
 
 ### Step 3: Final Model Solution
